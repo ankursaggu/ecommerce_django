@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ product.name }}</title>
+</head>
+<body>
+    <h1>{{ product.name }}</h1>
+    <p>{{ product.description }}</p>
+    <p>Price: {{ product.price }}</p>
+    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+    <a href="{% url 'add_to_cart' product.id %}">Add to Cart</a>
+
+    <h2>Recommended Products</h2>
+    <ul>
+        {% for recommended_product in recommended_products %}
+            <li>
+                <a href="{% url 'product_detail' recommended_product.id %}">{{ recommended_product.name }}</a>
+                - {{ recommended_product.price }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
